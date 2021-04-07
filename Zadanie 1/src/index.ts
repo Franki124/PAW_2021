@@ -1,3 +1,4 @@
+//tsc src/index.ts --outdir ./build
 class App{
  data1Input: HTMLInputElement;
  data2Input: HTMLInputElement;
@@ -21,10 +22,10 @@ class App{
         this.data2Input = document.querySelector("#data2");
         this.data3Input = document.querySelector("#data3");
         this.data4Input = document.querySelector("#data4");
-        this.maxInput = document.querySelector("#data1");
-        this.minInput = document.querySelector("#data1");
-        this.avgInput = document.querySelector("#data1");
-        this.sumInput = document.querySelector("#data1");
+        this.maxInput = document.querySelector("#max");
+        this.minInput = document.querySelector("#min");
+        this.avgInput = document.querySelector("#avg");
+        this.sumInput = document.querySelector("#sum");
     }
     WatchValues() {
         this.data1Input.addEventListener("input", () => this.ShowValue());
@@ -33,14 +34,14 @@ class App{
         this.data4Input.addEventListener("input", () => this.ShowValue());
     }
     ShowValue() {
-        const data1 = +this.data1Input.value;
-        const data2 = +this.data1Input.value;
-        const data3 = +this.data1Input.value;
-        const data4 = +this.data1Input.value;
-        const sum = data1 + data2 + data3 + data4;
-        const avg = sum/4;
-        const min = Math.min(data1 , data2, data3, data4);
-        const max = Math.max(data1, data2, data3, data4);
+        let data1 = +this.data1Input.value;
+        let data2 = +this.data2Input.value;
+        let data3 = +this.data3Input.value;
+        let data4 = +this.data4Input.value;
+        let sum = data1 + data2 + data3 + data4;
+        let avg = sum/4;
+        let min = Math.min(data1 , data2, data3, data4);
+        let max = Math.max(data1, data2, data3, data4);
         
         this.sumInput.value = sum.toString();
         this.avgInput.value = avg.toString();
@@ -48,3 +49,4 @@ class App{
         this.maxInput.value = max.toString();
     }
 }
+new App();

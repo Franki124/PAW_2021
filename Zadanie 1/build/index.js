@@ -1,5 +1,7 @@
+//tsc src/index.ts --outdir ./build
 var App = /** @class */ (function () {
     function App() {
+        console.log("coś");
         this.Start();
     }
     App.prototype.Start = function () {
@@ -11,10 +13,10 @@ var App = /** @class */ (function () {
         this.data2Input = document.querySelector("#data2");
         this.data3Input = document.querySelector("#data3");
         this.data4Input = document.querySelector("#data4");
-        this.maxInput = document.querySelector("#data1");
-        this.minInput = document.querySelector("#data1");
-        this.avgInput = document.querySelector("#data1");
-        this.sumInput = document.querySelector("#data1");
+        this.maxInput = document.querySelector("#max");
+        this.minInput = document.querySelector("#min");
+        this.avgInput = document.querySelector("#avg");
+        this.sumInput = document.querySelector("#sum");
     };
     App.prototype.WatchValues = function () {
         var _this = this;
@@ -24,10 +26,11 @@ var App = /** @class */ (function () {
         this.data4Input.addEventListener("input", function () { return _this.ShowValue(); });
     };
     App.prototype.ShowValue = function () {
+        console.log("coś 2");
         var data1 = +this.data1Input.value;
-        var data2 = +this.data1Input.value;
-        var data3 = +this.data1Input.value;
-        var data4 = +this.data1Input.value;
+        var data2 = +this.data2Input.value;
+        var data3 = +this.data3Input.value;
+        var data4 = +this.data4Input.value;
         var sum = data1 + data2 + data3 + data4;
         var avg = sum / 4;
         var min = Math.min(data1, data2, data3, data4);
@@ -39,3 +42,4 @@ var App = /** @class */ (function () {
     };
     return App;
 }());
+new App();
