@@ -1,7 +1,7 @@
+"use strict";
 //tsc src/index.ts --outdir ./build
 var App = /** @class */ (function () {
     function App() {
-        console.log("coś");
         this.Start();
     }
     App.prototype.Start = function () {
@@ -26,7 +26,6 @@ var App = /** @class */ (function () {
         this.data4Input.addEventListener("input", function () { return _this.ShowValue(); });
     };
     App.prototype.ShowValue = function () {
-        console.log("coś 2");
         var data1 = +this.data1Input.value;
         var data2 = +this.data2Input.value;
         var data3 = +this.data3Input.value;
