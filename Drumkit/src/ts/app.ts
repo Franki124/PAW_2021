@@ -1,3 +1,5 @@
+import { Player } from "./player";
+
 class App{
 
     drumButton1: HTMLButtonElement = document.getElementById('drum-button-1') as HTMLButtonElement;
@@ -9,6 +11,8 @@ class App{
     drumButton7: HTMLButtonElement = document.getElementById('drum-button-7') as HTMLButtonElement;
     drumButton8: HTMLButtonElement = document.getElementById('drum-button-8') as HTMLButtonElement;
     drumButton9: HTMLButtonElement = document.getElementById('drum-button-9') as HTMLButtonElement;
+
+    player : Player = new Player();
 
     constructor(){
         console.log('DrumKit started');
@@ -31,6 +35,7 @@ class App{
 
     private drumButtonClick(buttonLetter: string){
         console.log(buttonLetter);
+        this.player.playSound(buttonLetter);
     }
 }
 
