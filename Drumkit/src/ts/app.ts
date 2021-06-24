@@ -57,7 +57,12 @@ class App{
                 this.recorded.push(new Sample(buttonLetter, timeStamp - this.startedTimeStamp));
             }
             else{
-                this.recorded.push(new Sample(buttonLetter, (timeStamp - this.startedTimeStamp) - this.recorded[this.recorded.length - 1].delay));
+                let allPreviousDelays = 0;
+                this.recorded.forEach(element => {
+                    allPreviousDelays = allPreviousDelays + element.delay
+                });
+
+                this.recorded.push(new Sample(buttonLetter, (timeStamp - this.startedTimeStamp) - allPreviousDelays));
             }
         }
     }
