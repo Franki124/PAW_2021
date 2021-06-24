@@ -92,6 +92,7 @@ class App{
             this.recordButton.disabled = true;
             this.playButton.disabled = true;
             this.playing = true;
+            this.progressBar.value = 0;
 
             if (this.recorded.length > 0){
                 this.playTimer = setTimeout(() => this.playSound(0), this.recorded[0].delay);
@@ -105,6 +106,7 @@ class App{
     private playSound(soundNumber: number){
         if (soundNumber < this.recorded.length){
             this.player.playSound(this.recorded[soundNumber].buttonLetter);
+            this.progressBar.value = (soundNumber / this.recorded.length) * 100;
         }
 
         clearTimeout(this.playTimer);
@@ -121,6 +123,7 @@ class App{
         this.playing = false;
         this.recordButton.disabled = false;
         this.playButton.disabled = false;
+        this.progressBar.value = 100;
     }
 
 }
