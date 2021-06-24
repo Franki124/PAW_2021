@@ -1,3 +1,4 @@
 import "./css/style.css"
-
-console.log('DrumKit started') 
+import { App } from './ts/app';
+//console.log('DrumKit started') 
+const app = new App(); 
