@@ -37,6 +37,7 @@ class Player{
         }
 
         if (audioElement != null){
+            audioElement.currentTime = 0;
             audioElement.play();
         }
 
