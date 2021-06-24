@@ -23,6 +23,11 @@ module.exports = {
         from: "src/**/*.css",
         to: "css/",
         flatten: true
+      },
+      {
+        from: "src/**/*.wav",
+        to: "sounds/",
+        flatten: true
       }
     ])
   ],
