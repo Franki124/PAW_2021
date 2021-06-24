@@ -18,6 +18,11 @@ module.exports = {
         from: "src/*.html",
         to: "",
         flatten: true
+      },
+      {
+        from: "src/**/*.css",
+        to: "css/",
+        flatten: true
       }
     ])
   ],
@@ -28,7 +33,11 @@ module.exports = {
         test: /\.tsx?$/,
         use: ["ts-loader"],
         exclude: /node_modules/
-      }
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
     ]
   }
 }; 
