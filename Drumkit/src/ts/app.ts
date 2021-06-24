@@ -43,7 +43,7 @@ class App{
         this.drumButton8.addEventListener('click', (e) => this.drumButtonClick((e.target as HTMLElement).innerText.toUpperCase(), e.timeStamp));
         this.drumButton9.addEventListener('click', (e) => this.drumButtonClick((e.target as HTMLElement).innerText.toUpperCase(), e.timeStamp));
 
-        document.addEventListener('keypress', (e) => this.drumButtonClick(e.key.toString().toUpperCase() e.timeStamp));
+        document.addEventListener('keypress', (e) => this.drumButtonClick(e.key.toString().toUpperCase(), e.timeStamp));
         this.recordButton.addEventListener('click', (e) => this.startRecording());
         this.playButton.addEventListener('click', (e) => this.startPlayingRecorded());
     }
