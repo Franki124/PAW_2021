@@ -5,7 +5,7 @@ import { WeatherBuilder } from "./weatherBuilder";
 class App{
 
     api: Api = new Api();
-    weatherBuilder: WeatherBuilder = new WeatherBuilder();
+    weatherBuilder: WeatherBuilder = new WeatherBuilder((x) => this.refreshEvent(x));
 
     inputElement: HTMLInputElement = document.getElementById('city-input') as HTMLInputElement;
     addCityButton: HTMLButtonElement = document.getElementById('add-city-button') as HTMLButtonElement;
@@ -18,19 +18,27 @@ class App{
         this.createEventListeners();
     }
 
+    private refreshEvent(city: string){
+        let cityName = city.toLowerCase();
+        this.cityArray = this.cityArray.filter(x => x != cityName);
+        this.saveToLocalStorage();
+        this.refreshWeatherData();
+    }
+
     private createEventListeners(){
         this.addCityButton.addEventListener('click', () => this.addCity());
     }
     //metoda do obsługi eventów
     private async addCity(){
-        if (this.cityArray.includes(this.inputElement.value.toLowerCase()) == false){
-            let weather = await this.api.getWeather(this.inputElement.value);
-            if (weather != null){
-                this.cityArray.push(this.inputElement.value.toLowerCase());
-                this.saveToLocalStorage();
-                await this.refreshWeatherData();
-            }
+        let weather = await this.api.getWeather(this.inputElement.value);
+
+        if (weather != null && this.cityArray.includes(weather.name.toLowerCase()) == false){
+            this.cityArray.push(weather.name.toLowerCase());
+            this.saveToLocalStorage();
+            await this.refreshWeatherData();
+        }
     }    
+
     //Metoda dodające miasta z pobraną informacją odnośnie pogody.
     private saveToLocalStorage(){
         localStorage.setItem("cityArray", JSON.stringify(this.cityArray));

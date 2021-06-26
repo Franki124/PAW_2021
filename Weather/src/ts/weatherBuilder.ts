@@ -2,7 +2,12 @@ import { WeatherApiInterface } from "./weatherApiInterface";
 
 class WeatherBuilder{
 
-    allWeathersBox: HTMLElement = document.getElementById('all-weathers') as HTMLElement;
+    private allWeathersBox: HTMLElement = document.getElementById('all-weathers') as HTMLElement;
+    private refreshEvent: (city: string) => void;
+
+    constructor(refreshEvent: (city: string) => void){
+        this.refreshEvent = refreshEvent;
+    }
 
     clearAllWeathers(){
         while (this.allWeathersBox.hasChildNodes()) {
@@ -53,6 +58,17 @@ class WeatherBuilder{
         item.appendChild(removeButtonDiv);
 
         this.allWeathersBox.appendChild(item);
+        
+        removeButton.addEventListener('click', (e) => this.removeWeather(e))
+    }
+
+    private removeWeather(event: Event){
+        let cityName = ((event.currentTarget as HTMLElement).parentElement?.parentElement?.firstChild as HTMLElement).innerText;
+
+        let elementToRemove = (event.currentTarget as HTMLElement).parentElement?.parentElement;
+        elementToRemove?.parentElement?.removeChild(elementToRemove);
+
+        this.refreshEvent(cityName)
     }
 }
 //Klasa budująca interfejs w strukturze DOM pogodynki.
