@@ -16,6 +16,11 @@ class App{
         console.log("App started");
         this.loadFromLocalStorage();
         this.createEventListeners();
+        this.autoUpdateInit();
+    }
+
+    private autoUpdateInit(){
+        setInterval(() => this.refreshWeatherData(), 60000);
     }
 
     private refreshEvent(city: string){
