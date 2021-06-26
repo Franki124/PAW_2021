@@ -108,7 +108,7 @@ class App{
             this.player.playSound(this.recorded[soundNumber].buttonLetter);
             this.progressBar.value = (soundNumber / this.recorded.length) * 100;
         }
-
+//czyszczenie timeoutu i puszczanie nowego
         clearTimeout(this.playTimer);
 
         if (soundNumber + 1 < this.recorded.length){
