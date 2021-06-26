@@ -23,16 +23,15 @@ class App{
     }
     //metoda do obsługi eventów
     private async addCity(){
-        let weather = await this.api.getWeather(this.inputElement.value);
+        if (this.cityArray.includes(this.inputElement.value.toLowerCase()) == false){
+            let weather = await this.api.getWeather(this.inputElement.value);
             if (weather != null){
-                this.cityArray.push(this.inputElement.value);
+                this.cityArray.push(this.inputElement.value.toLowerCase());
                 this.saveToLocalStorage();
                 await this.refreshWeatherData();
             }
-    }
-    // Na początku jakiś log żebym wiedział że tutaj czegoś nie spiepszyłem.
-    
-
+    }    
+    //Metoda dodające miasta z pobraną informacją odnośnie pogody.
     private saveToLocalStorage(){
         localStorage.setItem("cityArray", JSON.stringify(this.cityArray));
     }
