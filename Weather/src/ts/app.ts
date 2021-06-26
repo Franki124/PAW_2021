@@ -18,7 +18,7 @@ class App{
     private createEventListeners(){
         this.addCityButton.addEventListener('click', () => this.addCity());
     }
-
+    //metoda do obsługi eventów
     private async addCity(){
         let weather = await this.api.getWeather(this.inputElement.value);
             if (weather != null){
