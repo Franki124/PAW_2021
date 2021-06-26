@@ -1,0 +1,25 @@
+body {
+    background-color: darkgoldenrod;
+  }
+
+
+  html {
+
+    font-family: "Lucida Console", "Courier New", monospace;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .top-bar-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3em;
+    background-color: brown;
+  }
+
+  .top-bar-item {
+    max-width: 50%;
+    font-size: 2em;
+  } 
