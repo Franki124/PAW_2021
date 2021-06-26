@@ -1,8 +1,11 @@
 import { Api } from "./api";
 //importujemy klasę obsługującą nasze API
+import { WeatherBuilder } from "./weatherBuilder";
+
 class App{
 
     api: Api = new Api();
+    weatherBuilder: WeatherBuilder = new WeatherBuilder();
 
     inputElement: HTMLInputElement = document.getElementById('city-input') as HTMLInputElement;
     addCityButton: HTMLButtonElement = document.getElementById('add-city-button') as HTMLButtonElement;
@@ -48,7 +51,7 @@ class App{
         this.cityArray.forEach(async element => {
             let weather = await this.api.getWeather(element);
             if (weather != null){
-                console.log(weather);
+                this.weatherBuilder.addWeather(weather);
             }
         });
     }
