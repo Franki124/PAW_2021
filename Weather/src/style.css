@@ -22,4 +22,16 @@ body {
   .top-bar-item {
     max-width: 50%;
     font-size: 2em;
-  } 
+  
+    padding: 1.5em;
+}
+
+.top-bar-input{
+  font-size: 1em; 
+}
+
+.top-bar-button{
+vertical-align: top;
+padding: 1em;
+background-color: gold;
+} 
