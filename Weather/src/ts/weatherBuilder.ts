@@ -4,6 +4,12 @@ class WeatherBuilder{
 
     allWeathersBox: HTMLElement = document.getElementById('all-weathers') as HTMLElement;
 
+    clearAllWeathers(){
+        while (this.allWeathersBox.hasChildNodes()) {
+            this.allWeathersBox.removeChild(this.allWeathersBox.lastChild as ChildNode)
+        }
+    }
+    //czyszczenie danych po odświeżeniu strony.
     addWeather(weather: WeatherApiInterface){
         let item = document.createElement('div');
         item.className = 'weather-item';

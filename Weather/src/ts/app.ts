@@ -48,6 +48,7 @@ class App{
     }
     //metoda odświeżająca aktualne informację o pogodzie dla określonego miasta
     private async refreshWeatherData(){
+        this.weatherBuilder.clearAllWeathers();
         this.cityArray.forEach(async element => {
             let weather = await this.api.getWeather(element);
             if (weather != null){
