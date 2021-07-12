@@ -1,0 +1,76 @@
+body {
+    background-color: darkgoldenrod;
+  }
+
+
+  html {
+
+    font-family: "Lucida Console", "Courier New", monospace;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .top-bar-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3em;
+    background-color: brown;
+  }
+
+  .top-bar-item {
+    max-width: 50%;
+    font-size: 2em;
+  
+    padding: 1.5em;
+}
+
+.top-bar-input{
+  font-size: 1em; 
+}
+
+.top-bar-button{
+vertical-align: top;
+padding: 1em;
+background-color: gold;
+} 
+
+.weather-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3em, 1em, 3em, 1em ;
+  margin: 1em;
+  flex-wrap: wrap;
+}
+
+.weather-item {
+  font-size: 2em;
+  padding: 1em;
+  background-color: brown;
+  margin: 1em;
+}
+
+.weather-item-title {
+  text-align: center;
+  font-size: 1em;
+}
+
+.weather-item-info {
+  text-align: center;
+  font-size: 0.5em;
+  padding: 0.5em;
+}
+
+.weather-item-info-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weather-item-info-button {
+  padding: 0.5em;
+  font-size: 1em;
+  background-color: gold;
+}
