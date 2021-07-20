@@ -1,10 +1,8 @@
-import { Api } from "./api";
 //importujemy klasę obsługującą nasze API
 import { WeatherBuilder } from "./weatherBuilder";
 
 class App{
 
-    api: Api = new Api();
     weatherBuilder: WeatherBuilder = new WeatherBuilder((x) => this.refreshEvent(x));
 
     inputElement: HTMLInputElement = document.getElementById('city-input') as HTMLInputElement;
@@ -15,34 +13,16 @@ class App{
     constructor(){
         console.log("App started");
         this.loadFromLocalStorage();
-        this.createEventListeners();
-        this.autoUpdateInit();
-    }
-
-    private autoUpdateInit(){
-        setInterval(() => this.refreshWeatherData(), 60000);
     }
 
     private refreshEvent(city: string){
         let cityName = city.toLowerCase();
         this.cityArray = this.cityArray.filter(x => x != cityName);
         this.saveToLocalStorage();
-        this.refreshWeatherData();
     }
 
-    private createEventListeners(){
-        this.addCityButton.addEventListener('click', () => this.addCity());
-    }
     //metoda do obsługi eventów
-    private async addCity(){
-        let weather = await this.api.getWeather(this.inputElement.value);
-
-        if (weather != null && this.cityArray.includes(weather.name.toLowerCase()) == false){
-            this.cityArray.push(weather.name.toLowerCase());
-            this.saveToLocalStorage();
-            await this.refreshWeatherData();
-        }
-    }    
+  
 
     //Metoda dodające miasta z pobraną informacją odnośnie pogody.
     private saveToLocalStorage(){
@@ -56,17 +36,7 @@ class App{
         }
         else this.cityArray = [];
         //metoda do ładowania zapisanych miast.
-        await this.refreshWeatherData();
     }
     //metoda odświeżająca aktualne informację o pogodzie dla określonego miasta
-    private async refreshWeatherData(){
-        this.weatherBuilder.clearAllWeathers();
-        this.cityArray.forEach(async element => {
-            let weather = await this.api.getWeather(element);
-            if (weather != null){
-                this.weatherBuilder.addWeather(weather);
-            }
-        });
-    }
 }
 export {App}; 
