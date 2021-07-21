@@ -1,17 +1,11 @@
 import { WeatherApiInterface } from "./weatherApiInterface";
 
-class WeatherBuilder{
+class NoteBuilder{
 
     private allWeathersBox: HTMLElement = document.getElementById('all-weathers') as HTMLElement;
-    private refreshEvent: (city: string) => void;
-
-    constructor(refreshEvent: (city: string) => void){
-        this.refreshEvent = refreshEvent;
-    }
-
 
     }
-    //czyszczenie danych po odświeżeniu strony.
+
     addNote(){
         let item = document.createElement('div');
         item.className = 'note-item';
@@ -20,6 +14,8 @@ class WeatherBuilder{
         title.className = 'note-item-title';
         item.appendChild(title);
 
+        let textfield = document.createElement('div')
+        textfield.className = 'text-field'
 
         let removeButton = document.createElement('button');
         removeButton.className = 'weather-item-info-button';
@@ -30,5 +26,5 @@ class WeatherBuilder{
         removeButtonDiv.appendChild(removeButton);
         item.appendChild(removeButtonDiv);
     }
-//Klasa budująca interfejs w strukturze DOM pogodynki.
-export {WeatherBuilder} 
+//Klasa budująca interfejs w strukturze DOM notatnika.
+export {NoteBuilder} 

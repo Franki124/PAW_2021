@@ -1,9 +1,7 @@
 //importujemy klasę obsługującą nasze API
-import { WeatherBuilder } from "./weatherBuilder";
+import { NoteBuilder } from "./weatherBuilder";
 
 class App{
-
-    weatherBuilder: WeatherBuilder = new WeatherBuilder((x) => this.refreshEvent(x));
 
     inputElement: HTMLInputElement = document.getElementById('city-input') as HTMLInputElement;
     addCityButton: HTMLButtonElement = document.getElementById('add-city-button') as HTMLButtonElement;
