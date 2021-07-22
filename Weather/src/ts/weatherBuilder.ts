@@ -11,7 +11,7 @@ class WeatherBuilder{
 
     clearAllWeathers(){
         while (this.allWeathersBox.hasChildNodes()) {
-            this.allWeathersBox.removeChild(this.allWeathersBox.lastChild as ChildNode)
+            this.allWeathersBox.removeChild(this.allWeathersBox.lastChild as Node)
         }
     }
     //czyszczenie danych po odświeżeniu strony.

@@ -4,7 +4,7 @@ class NoteBuilder{
 
     private allWeathersBox: HTMLElement = document.getElementById('all-weathers') as HTMLElement;
 
-    }
+    
 
     addNote(){
         let item = document.createElement('div');
@@ -26,5 +26,6 @@ class NoteBuilder{
         removeButtonDiv.appendChild(removeButton);
         item.appendChild(removeButtonDiv);
     }
+}
 //Klasa budująca interfejs w strukturze DOM notatnika.
 export {NoteBuilder} 
