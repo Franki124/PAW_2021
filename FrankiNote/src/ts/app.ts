@@ -3,6 +3,8 @@ import { NoteBuilder } from "./weatherBuilder";
 
 class App{
 
+    weatherBuilder: NoteBuilder = new NoteBuilder();
+
     inputElement: HTMLInputElement = document.getElementById('note-input') as HTMLInputElement;
     addCityButton: HTMLButtonElement = document.getElementById('add-note-button') as HTMLButtonElement;
     //Selector'y do wyszukiwania elementów s trukturze DOM.
@@ -11,6 +13,20 @@ class App{
     constructor(){
         console.log("App started");
         this.loadFromLocalStorage();
+        this.createEventListeners();
+    }
+
+    private createEventListeners(){
+        this.addCityButton.addEventListener('click', () => this.addNote());
+    }
+
+    private async addNote(){
+        let weather = await (this.inputElement.value);
+
+
+        if (weather != null){
+            this.saveToLocalStorage();
+        }
     }
 
     // private refreshEvent(city: string){

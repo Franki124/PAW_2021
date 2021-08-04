@@ -18,11 +18,11 @@ class NoteBuilder{
         textfield.className = 'text-field'
 
         let removeButton = document.createElement('button');
-        removeButton.className = 'weather-item-info-button';
+        removeButton.className = 'note-item-info-button';
         removeButton.innerHTML = 'Remove';
 
         let removeButtonDiv = document.createElement('div');
-        removeButtonDiv.className = 'weather-item-info';
+        removeButtonDiv.className = 'note-item-info';
         removeButtonDiv.appendChild(removeButton);
         item.appendChild(removeButtonDiv);
     }

@@ -1,9 +1,9 @@
 export interface NoteApiInterface {
-    weather: Weather[];
+    note: Note[];
     name: string;
 }
 
-interface Weather {
+interface Note {
     description: string;
 }
 //podstawowe elementy budujące cały interfejs naszego API do pogody
