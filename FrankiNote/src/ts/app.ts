@@ -3,10 +3,10 @@ import { NoteBuilder } from "./weatherBuilder";
 
 class App{
 
-    weatherBuilder: NoteBuilder = new NoteBuilder();
+    weatherBuilder: NoteBuilder = new NoteBuilder((x) => this.refreshEvent(x));
 
     inputElement: HTMLInputElement = document.getElementById('note-input') as HTMLInputElement;
-    addCityButton: HTMLButtonElement = document.getElementById('add-note-button') as HTMLButtonElement;
+    addNoteButton: HTMLButtonElement = document.getElementById('add-note-button') as HTMLButtonElement;
     //Selector'y do wyszukiwania elementów s trukturze DOM.
     noteArray: string[] = [];
     //tablica stringów do przechowywania nazw miast.
@@ -16,37 +16,33 @@ class App{
         this.createEventListeners();
     }
 
-    private createEventListeners(){
-        this.addCityButton.addEventListener('click', () => this.addNote());
+    private refreshEvent(city: string){
+        let cityName = city.toLowerCase();
+        this.noteArray = this.noteArray.filter(x => x != cityName);
+        this.saveToLocalStorage();
     }
 
+    private createEventListeners(){
+        this.addNoteButton.addEventListener('click', () => this.addNote());
+    }
+   //metoda do obsługi eventów
     private async addNote(){
-        let weather = await (this.inputElement.value);
-
+        let weather
 
         if (weather != null){
             this.saveToLocalStorage();
         }
     }
 
-    // private refreshEvent(city: string){
-    //     let cityName = city.toLowerCase();
-    //     this.cityArray = this.cityArray.filter(x => x != cityName);
-    //     this.saveToLocalStorage();
-    // }
-
-    //metoda do obsługi eventów
-  
-
     //Metoda dodające miasta z pobraną informacją odnośnie pogody.
     private saveToLocalStorage(){
-        localStorage.setItem("cityArray", JSON.stringify(this.noteArray));
+        localStorage.setItem("noteArray", JSON.stringify(this.noteArray));
     }
     //metoda do zapisywania dodanych miast do pliku LocalStorage.
     private async loadFromLocalStorage(){
-        let citiesFromStorage = localStorage.getItem("cityArray");
-        if (citiesFromStorage){
-            this.noteArray = JSON.parse(citiesFromStorage);
+        let notesFromStorage = localStorage.getItem("noteArray");
+        if (notesFromStorage){
+            this.noteArray = JSON.parse(notesFromStorage);
         }
         else this.noteArray = [];
         //metoda do ładowania zapisanych elementów z pliku localStorage.
