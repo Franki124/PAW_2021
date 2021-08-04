@@ -1,9 +1,9 @@
-import { WeatherApiInterface } from "./weatherApiInterface";
+import { NoteApiInterface } from "./weatherApiInterface";
 
 class NoteBuilder{
 
-    private allWeathersBox: HTMLElement = document.getElementById('all-weathers') as HTMLElement;
-
+    private allWeathersBox: HTMLElement = document.getElementById('all-notes') as HTMLElement;
+    // zmienna odwołująca się do elementu w strukturze DOM, dokładniej to do sekcji w której będą tworzone nasze notatki.
     
 
     addNote(){
