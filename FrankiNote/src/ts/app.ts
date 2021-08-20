@@ -1,5 +1,5 @@
 //importujemy klasę obsługującą nasze API
-import { NoteBuilder } from "./weatherBuilder";
+import { NoteBuilder } from "./frankiNoteBuilder";
 
 class App{
 
@@ -25,7 +25,7 @@ class App{
     private createEventListeners(){
         this.addNoteButton.addEventListener('click', () => this.addNote());
     }
-   //metoda do obsługi eventów
+   //metoda dodająca notatkę
     private addNote(){
 
         this.weatherBuilder.addNote(this.inputElement.value);

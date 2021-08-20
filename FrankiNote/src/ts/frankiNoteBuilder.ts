@@ -1,4 +1,4 @@
-import { NoteApiInterface } from "./weatherApiInterface";
+import { NoteApiInterface } from "./frankiNoteApiInterface";
 
 class NoteBuilder{
 
@@ -24,8 +24,14 @@ class NoteBuilder{
         let textfield = document.createElement('div')
         textfield.className = 'text-field'
 
+        let inputfield = document.createElement('input')
+        inputfield.className = 'input-text'
+        inputfield.innerHTML = "Text"
+        textfield.appendChild(inputfield);
+        item.appendChild(textfield);        
+
         let removeButton = document.createElement('button');
-        removeButton.className = 'note-item-info-button';
+        removeButton.className = 'note-item-remove-button';
         removeButton.innerHTML = 'Remove';
 
         let removeButtonDiv = document.createElement('div');
